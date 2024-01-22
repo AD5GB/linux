@@ -1408,6 +1408,24 @@ choice
 	prompt "Compiler optimization level"
 	default CC_OPTIMIZE_FOR_PERFORMANCE
 
+config CC_OPTIMIZE_FOR_EXTREME_PERFORMANCE
+    bool "Extreme optimization (-Ofast -flto=auto)"
+    help
+      Danger lurks here. While it works well for many people,
+      it's at least an order of mmagnitude more risky than "-O3".
+      Compilers have gotten much better over the years but great
+      care is still called for here!  The link-time optimizer is
+      also invoked at this setting which can increase build times.
+      Use with EXTREME cauttion. You've been warned!
+
+config CC_OPTIMIZE_FOR_HIGH_PERFORMANCE
+    bool "Optimize for high performance (-O3)"
+    help
+      At this optimization level some people get 'twitchy', especially
+      in kernels and device drivers. It introduces some very aggressive
+      compiler flags that may cause problems or strange behavior. Use
+      it carefully, if you dare ;) Test carefully and thoroughly.
+
 config CC_OPTIMIZE_FOR_PERFORMANCE
 	bool "Optimize for performance (-O2)"
 	help
